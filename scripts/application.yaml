@@ -32,4 +32,19 @@ spec:
     ports:
     - port: 8070
       targetPort: 8070
-        
+      
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+    name: aggregator-ingress
+    annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+   rules:
+    - http:
+        paths:
+          - path: /
+            backend:
+              serviceName: aggregator-service
+              servicePort: 8070
