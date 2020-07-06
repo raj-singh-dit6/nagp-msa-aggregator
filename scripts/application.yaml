@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: aggregator
-        image: rajsingh6/aggregatorservice:v2
+        image: rajsingh6/aggregatorservice:v10
         ports:
           - containerPort: 8070
         env:
@@ -32,7 +32,7 @@ spec:
     ports:
     - port: 8070
       targetPort: 8070
-      
+
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -40,6 +40,7 @@ metadata:
     name: aggregator-ingress
     annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /
+        
 spec:
    rules:
     - http:
